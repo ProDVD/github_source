@@ -1,0 +1,416 @@
+    @media screen and (orientation: portrait) {
+        .curtain {
+            z-index: 9999;
+        }
+    }
+
+    /* For landscape, we want the tool bar stick on the left */
+
+    @media screen and (orientation: landscape) {
+        .curtain {
+            z-index: -9999;
+        }
+    }
+
+.curtain {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20%;
+    }
+
+.generalBox {
+    background: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    align-items: stretch;
+
+    .topPanel {
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 5px 0px 5px 25px;
+        background: #aaf6fd;
+        // border-bottom: 1px solid #c2c2c2;
+        .logo {
+            color:#474747;
+        }
+        .logOutUs {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            }
+        .emailUser {
+            margin: 5px 5px 5px 10px;
+            padding: 5px 10px 5px 10px;
+            color: #939393;
+            border-right: 2px solid #929292;
+             font-family: 'Encode Sans Condensed', sans-serif;
+             font-style: italic;
+            } 
+        #logOutUser {
+            padding: 5px 5px 5px 5px;
+            color:#474747;
+            font-size: 18px;
+            font-weight: 600;
+            }       
+        }
+
+
+
+        .twoLineBox {
+            height: 50px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            // margin: 0px 0px 10px 0px;
+            padding: 10px 10px 0px 10px;
+            color: #939393;
+            font-size: 20px;
+            font-weight: 600;
+            .label {
+                width: 240px;
+                color:#474747;
+            }
+        }
+
+    .contentPanel {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        .sessionPanel {
+            // display: flex;
+            // flex-direction: column;
+            // align-items: center;
+            // width: 250px;
+            // padding: 5px 5px 5px 0px;
+            // display: flex;
+            // position: absolute;
+            // top: 0px;
+            // bottom: 10px;
+            // display: flex;
+
+            height: 100%;
+            .scrollbar {
+                //  overflow: auto;
+                //  width: 100%; 
+            // overflow: hidden;
+            // width: 250px; 
+            height: 100%;
+			width: 250px;
+			background: white;
+			overflow: auto;
+			position: relative;
+                 .sessionBox {
+            //          flex-direction: column;
+            //          justify-content: center;
+            //          padding: 5px 0px 5px 0px;
+            // max-height: 100%;
+            // overflow-y: auto;
+            height: 100%;
+			position: absolute;
+			width: 100%;
+			left: 0;
+                         .oneSession {
+                             margin: 0px 10px 0px 10px;
+                             border-radius: 5px;
+                             padding: 5px;
+                             display: flex;
+                             justify-content: center;
+                             font-weight: 700;
+                             font-size: 20px;
+                             font-family: 'Encode Sans Condensed', sans-serif;
+                             }
+                    } 
+                } 
+           
+                 
+        }
+
+       }  
+        .scrolBoxFile {
+            // display: flex;
+            // padding: 5px;
+            // width: 100%;
+            // margin: 0px 10px 0px 0px;
+            background: #f2f2f2;
+			flex-grow: 2;
+			overflow: auto;
+			position: relative;
+			// position: relative;
+          
+            
+            .tab-content {
+                // width: 100%;   
+                // margin-left: 255px;             
+                // overflow-y: auto;
+                // overflow-x: hidden;
+                    // flex-direction: row;
+                    // width: 100%;
+
+
+            overflow: hidden;
+            position: absolute;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+                     
+            
+            // background: #939;  
+            // max-height: 100%;
+            // overflow-y: auto; 
+                 .inTopPanel {
+                  display: flex;
+			      flex-direction: row;
+                  flex-wrap: wrap;
+                  padding: 10px;
+                         .fileBox{
+                             display: flex;
+                             flex-direction: column;
+                             margin: 10px;
+                             padding: 5px;
+                             font-size: 16px;
+                             max-width: 200px;
+                             color: #939393;
+                             .imageBLock {
+                                 position: relative;
+                                .duration {
+                                    background: black;
+                                    position: absolute;
+                                    color: white;
+                                    font-size: 16px;
+                                    font-weight: 800;
+                                    width: 65px;
+                                    height: 30px;
+                                    top: 120px;
+                                    left:135px;
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    justify-content: center;
+                                    }
+                             }
+                             .icon{
+                                 position: absolute;
+                                 top: 10px;
+                                 left: 160px;
+                             }
+                             .fileNameBlock {
+                                 display: flex;
+                                 flex-direction: row;
+                                 align-items: center;
+                                 justify-content: flex-end;
+                                 width: 200px;
+                                 height: auto;
+                                 color:#474747;
+                                 font-size: 16px;
+                                 font-weight: 800;
+                                 a {
+                                     font-family: 'Encode Sans Condensed', sans-serif;
+                                     color:#474747;
+                                 }
+                             }
+                             }
+                    } 
+                } 
+           
+                 
+        }
+
+
+
+
+}
+a {
+    text-decoration: none !important;
+   }
+.oneSession {
+    text-decoration: none !important;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    font-family: 'Montserrat', sans-serif; 
+    color:  #474747;
+    transition: .3s ease-in-out;
+   }
+.oneSession:before {
+  content: "";
+  background: linear-gradient(90deg, rgba(255,255,255,.1), rgba(255,255,255,.5));
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+}
+.oneSession:hover {
+  background: #e0d5ce;
+  color: #fff;
+}
+.oneSession:hover:before {
+  left: 200px;
+  transition: .5s ease-in-out;
+}
+
+// .oneSession:hover {
+//     background: #f5f5f5;
+//     }
+.oneSession.checked:hover {
+    background: #f9640b;
+    color: white;
+    } 
+.checked {
+    background: #f9640b;
+    color: white;
+    } 
+    
+#home-tab:hover {
+   background: #e9e9e9;
+} 
+#profile-tab:hover {
+     background: #e9e9e9;
+}  
+ #contact-tab:hover {
+     
+     background: #e9e9e9;
+}   
+    
+#home-tab {
+    // border-right: none;
+    // border-left: none;
+    // border-top: none;
+    // border-bottom: 3px solid white; 
+    // border-top-left-radius: 0;
+    // border-top-right-radius: 0;
+    border-radius: 5px;
+}   
+ #profile-tab {
+#home-tab;
+ }
+ #contact-tab {
+#home-tab;
+ }
+ nav {
+     padding-left: 0px;
+    //  border-top: 1px solid #474747;
+ }
+ .nav-item.nav-link.active.show {
+    background: #f2f2f2;
+    color: #f9640b;
+ }
+.btn-info {
+    margin: 0px 10px 0px 10px;
+}
+
+
+.modal-dialog.modal-lg {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
+.fullScreen {
+     position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+}
+
+.modalButCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.goThere {
+    display: flex;
+    flex-direction: row;
+    background: #f9640b;
+    height: 85%;
+    width: 96%;
+    position: absolute;
+    .blockBack {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+        font-size: 50px;
+        background: #aaf6fd;
+        
+    }
+    .blockGo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+        font-size: 50px;
+        background: #3d4849;
+    }
+    span {
+            opacity: 0;
+        }
+        .blockBack:hover span{
+            opacity: 1;
+        }
+        .blockGo:hover span{
+            opacity: 1;
+        }
+
+}
+
+.fullscreenPhoto { 
+      position:absolute;
+      width:100vw;
+      left:-35.5%;
+    }
+
+    .backFullScreen{
+        z-index: -1; 
+        font-size: 70px;
+        margin: 50px 10px;
+        padding: 50px 150px 50px 150px; 
+        position:absolute;
+        opacity: 0;
+    }
+
+    .modal-body {
+        max-height: 470px;
+    }
+    

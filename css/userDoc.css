@@ -1,0 +1,432 @@
+@media screen and (orientation: portrait) {
+  .curtain {
+    z-index: 9999;
+  }
+}
+/* For landscape, we want the tool bar stick on the left */
+@media screen and (orientation: landscape) {
+  .curtain {
+    z-index: -9999;
+  }
+}
+body {
+  margin: 0px;
+}
+.curtain {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.generalBox {
+  background: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Encode Sans Condensed', sans-serif;
+  align-items: stretch;
+}
+.generalBox .topPanel {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 5px 0px 5px 25px;
+  background: #aaf6fd;
+}
+.generalBox .topPanel .logo {
+  color: #474747;
+}
+.generalBox .topPanel .logOutUs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+.generalBox .topPanel .emailUser {
+  margin: 5px 5px 5px 10px;
+  padding: 5px 10px 5px 10px;
+  color: #939393;
+  border-right: 2px solid #929292;
+  font-family: 'Encode Sans Condensed', sans-serif;
+  font-style: italic;
+}
+.generalBox .topPanel #logOutUser {
+  padding: 5px 5px 5px 5px;
+  color: #474747;
+  font-size: 18px;
+  font-weight: 600;
+}
+.generalBox .twoLineBox {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 10px 0px 10px;
+  color: #939393;
+  font-size: 20px;
+  font-weight: 600;
+}
+.generalBox .twoLineBox .label {
+  width: 240px;
+  color: #474747;
+}
+.generalBox .contentPanel {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.generalBox .contentPanel .sessionPanel {
+  height: 100%;
+}
+.generalBox .contentPanel .sessionPanel .scrollbar {
+  height: 100%;
+  width: 250px;
+  background: white;
+  overflow: auto;
+  position: relative;
+}
+.generalBox .contentPanel .sessionPanel .scrollbar .sessionBox {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.generalBox .contentPanel .sessionPanel .scrollbar .sessionBox .oneSession {
+  margin: 0px 10px 0px 10px;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: 'Encode Sans Condensed', sans-serif;
+}
+.generalBox .scrolBoxFile {
+  background: #f2f2f2;
+  flex-grow: 2;
+  overflow: auto;
+  position: relative;
+}
+.generalBox .scrolBoxFile .tab-content {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.generalBox .scrolBoxFile .tab-content .inTopPanel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.generalBox .scrolBoxFile .tab-content .inTopPanel .fileBox {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 5px;
+  font-size: 16px;
+  max-width: 200px;
+  color: #939393;
+}
+.generalBox .scrolBoxFile .tab-content .inTopPanel .fileBox .imageBLock {
+  position: relative;
+}
+.generalBox .scrolBoxFile .tab-content .inTopPanel .fileBox .imageBLock .duration {
+  background: black;
+  position: absolute;
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  width: 65px;
+  height: 30px;
+  top: 120px;
+  left: 135px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.generalBox .scrolBoxFile .tab-content .inTopPanel .fileBox .icon {
+  position: absolute;
+  top: 10px;
+  left: 160px;
+}
+.generalBox .scrolBoxFile .tab-content .inTopPanel .fileBox .fileNameBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 200px;
+  height: auto;
+  color: #474747;
+  font-size: 16px;
+  font-weight: 800;
+}
+.generalBox .scrolBoxFile .tab-content .inTopPanel .fileBox .fileNameBlock a {
+  font-family: 'Encode Sans Condensed', sans-serif;
+  color: #474747;
+}
+a {
+  text-decoration: none !important;
+}
+.oneSession {
+  text-decoration: none !important;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  font-family: 'Montserrat', sans-serif;
+  color: #474747;
+  transition: 0.3s ease-in-out;
+}
+.oneSession:before {
+  content: "";
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5));
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+}
+.oneSession:hover {
+  background: #e0d5ce;
+  color: #fff;
+}
+.oneSession:hover:before {
+  left: 200px;
+  transition: 0.5s ease-in-out;
+}
+.oneSession.checked:hover {
+  background: #f9640b;
+  color: white;
+}
+.checked {
+  background: #f9640b;
+  color: white;
+}
+#home-tab:hover {
+  background: #e9e9e9;
+}
+#profile-tab:hover {
+  background: #e9e9e9;
+}
+#contact-tab:hover {
+  background: #e9e9e9;
+}
+#home-tab {
+  border-radius: 5px;
+}
+#profile-tab {
+  border-radius: 5px;
+}
+#contact-tab {
+  border-radius: 5px;
+}
+nav {
+  padding-left: 0px;
+}
+.nav-item.nav-link.active.show {
+  background: #f2f2f2;
+  color: #f9640b;
+}
+.btn-info {
+  margin: 0px 10px 0px 10px;
+}
+.modal-dialog.modal-lg {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fullScreen {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modalButCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+#mylinkImg, #mylinkVid {
+  font-family: 'Encode Sans Condensed', sans-serif;
+}
+.goThere {
+  display: flex;
+  flex-direction: row;
+  background: #f9640b;
+  height: 85%;
+  width: 96%;
+  position: absolute;
+}
+.goThere .blockBack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  font-size: 50px;
+  background: #aaf6fd;
+}
+.goThere .blockGo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  font-size: 50px;
+  background: #3d4849;
+}
+.goThere span {
+  opacity: 0;
+}
+.goThere .blockBack:hover span {
+  opacity: 1;
+}
+.goThere .blockGo:hover span {
+  opacity: 1;
+}
+.backFullScreen {
+  z-index: -1;
+  font-size: 40px;
+  margin: 15px 10px;
+  padding: 15px 50px 15px 50px;
+  position: absolute;
+  opacity: 0;
+}
+.modal-body {
+  max-height: 470px;
+}
+
+
+
+/* DocMode */
+
+
+.topPanelDoc {
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 5px 0px 5px 25px;
+  background: #aaf6fd;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.input-group {
+  margin: 0px 15px 0px 15px;
+}
+.input-group-addon {
+  background: #fafafa;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e2e2;
+  border-right: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 0px 10px 0px 10px;
+}
+.generalBox .topPanelDoc #logOutUser {
+  padding: 5px 5px 5px 5px;
+  color: #474747;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.oneSessionDoc {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  margin: 0px 10px 5px 10px;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #474747;
+  background: #f6f6f6;
+  border: 1px solid #d6d6d6;
+  font-family: 'Encode Sans Condensed', sans-serif;
+}
+.oneSessionDoc {
+  text-decoration: none !important;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  color: #474747;
+  transition: 0.3s ease-in-out;
+}
+.oneSessionDoc:before {
+  content: "";
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5));
+  height: 120px;
+  width: 60px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+}
+.oneSessionDoc:hover {
+  background: #e0d5ce;
+  color: #fff;
+}
+.oneSessionDoc:hover:before {
+  left: 200px;
+  transition: 0.5s ease-in-out;
+}
+.oneSessionDoc.checked:hover {
+  background: #f9640b;
+  color: white;
+}
+.checked {
+  background: #f9640b;
+  color: white;
+}
+.spanIcon {
+ justify-content: space-between;
+  margin: 5px;
+}
+.spanName {
+  align-items: stretch;
+}
