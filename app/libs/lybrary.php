@@ -1,6 +1,8 @@
 <?
-require_once( 'PHPMailer/PHPMailerAutoload.php');
+//require_once( 'PHPMailer/PHPMailerAutoload.php');
 global $user, $UID, $isDoctor,$sessionList;
+use PHPMailer\PHPMailer\PHPMailer;
+
 class oneSession
 {
     public $sessionId;
@@ -220,7 +222,7 @@ function getPassForRemind ($mail) {
 }
 function sendMail($patEmail, $pass)
 {
-    $mail = new PHPMailer;
+    $mail = new PHPMailer();
     $mail->isSMTP();
     $mail->SMTPAuth = true;
     $mail->SMTPSecure = 'ssl';
