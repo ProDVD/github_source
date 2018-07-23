@@ -92,7 +92,6 @@ function Initializer()
 //==================================================================готовые методы=====================================
 function getSessionsForUser($user_ID)
 {
-
     global $sessionList;
     $sql = "SELECT session_id, creation_time  FROM tbl_session_protocol WHERE patient_id = '$user_ID' order by creation_time desc";
     $stmt = Initializer()->query($sql);
@@ -114,11 +113,9 @@ function validator($email, $pass)
         $isDoctor=true;
         return $res;
     }
-
     else
     {
         $sql = "SELECT patient_ID FROM tbl_patients WHERE email = '$email' AND password = '$pass' ";
-
         $stmt = Initializer()->query($sql);
         $res =  $stmt->fetch(2)['patient_ID'];
         if($res!=null)
@@ -126,7 +123,6 @@ function validator($email, $pass)
             $isDoctor=false;
             return $res;
         }
-
         else
             redirectSwitcher('./error.php');
     }
@@ -151,7 +147,6 @@ function getSessionByDocEmail($doc_email, $p_name, $p_dt_start, $p_dt_end)
 {
     global $sessionList;
     $sql="select session_id, creation_time, patient_name, patient_email from v_session_search t  where 1=1";
-
     if($p_name!='')
     {
         if (strpos($p_name, '@') != false)
@@ -160,7 +155,6 @@ function getSessionByDocEmail($doc_email, $p_name, $p_dt_start, $p_dt_end)
         else
             $sql.=" and upper(t.patient_email) like upper ('%$p_name%' )";
     }
-
     if($p_dt_start!='' and $p_dt_end!='' )
         $sql.= " and t.creation_time between convert(datetime, '$p_dt_start' , 110) and convert(datetime, '$p_dt_end' , 110)";
 
@@ -194,7 +188,6 @@ function redirectSwitcher($a)
     echo 'window.location.href="'.$a.'";';
     echo '</script>';
 }
-
 function browserAnalyzer () {
     $serverVar = $_SERVER['HTTP_USER_AGENT'];
     if(preg_match("/\bTrident\b/i",$serverVar) == 0 )
