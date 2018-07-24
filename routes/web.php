@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/test', 'HomeController@test');
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::post('/switcher', 'HomeController@switcher');
