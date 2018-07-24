@@ -80,15 +80,15 @@ class OneUser
 }
 //====================================================================================
 //инициализатор ПДО с установленными параметрами
-function Initializer()
-{
-    $obj =  new PDO("sqlsrv:server = tcp:ssmserver2.database.windows.net,1433; Database = db_ssm", "prodvdadmin", "AdminQwerty123");
-    if($obj==null)
-    {
-        //send email to support
-    }
-    return $obj;
-}
+//function Initializer()
+//{
+//    $obj =  new PDO("sqlsrv:server = tcp:ssmserver2.database.windows.net,1433; Database = db_ssm", "prodvdadmin", "AdminQwerty123");
+//    if($obj==null)
+//    {
+//        //send email to support
+//    }
+//    return $obj;
+//}
 //==================================================================готовые методы=====================================
 function getSessionsForUser($user_ID)
 {
