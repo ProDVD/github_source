@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public $sessionList;
     public function test()
     {
         //$var = Switcher::userAuth('patient_1@mail.ru', 'fesgxh');
@@ -19,12 +20,19 @@ class HomeController extends Controller
 
     public function patient()
     {
-        return view('pages.patient');
+        $sessionList;
+        $res = Switcher::getSessByPatId(session('user'));
+
+        return view('pages.patient', [
+            'sessionList' => Switcher::getSessByPatId(session('user'))
+        ]);
     }
 
     public function docmode()
     {
-        return view('pages.docmode');
+        return view('pages.docmode', [
+            'sessionList' => ''
+        ]);
     }
 
     public function forgot()
@@ -38,8 +46,8 @@ class HomeController extends Controller
         if($user instanceof Doctor) {
              $to = '/docmode';
         } elseif($user instanceof Patient) {
+            session(['user' => $user->patient_id]);
             $to = '/patient';
-            $var = Switcher::getSessByPatId($user->patient_id);
         } else {
             $to = '/';
         }

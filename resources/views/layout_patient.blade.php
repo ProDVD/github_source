@@ -7,21 +7,20 @@
     <script src="https://use.fontawesome.com/f1a5474be5.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed" rel="stylesheet">
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="bootstrap4/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    {{--<link rel="stylesheet" href="bootstrap4/bootstrap.css">--}}
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-
-    {{--<? switch( browserAnalyzer ()) : case 0 : ?>--}}
-    {{--<link rel="stylesheet" href="css/userDoc.css">--}}
-    {{--<script defer src="js/Index.js"></script>--}}
-    {{--<? break; case 1 : ?>--}}
-    {{--<link rel="stylesheet" href="css/userDoc.css">--}}
-    {{--<script defer src="js/IndexForIOS.js"></script>--}}
-    {{--<? break; case 2 : ?>--}}
-    {{--<link rel="stylesheet" href="css/all-ie-only.css">--}}
-    {{--<script defer src="js/Index.js"></script>--}}
-    {{--<? break; endswitch; ?>--}}
+    <?// switch( browserAnalyzer ()) : case 0 : ?>
+    <link rel="stylesheet" href="/public/css/userDoc.css">
+    <script defer src="/public/js/Index.js"></script>
+    <?// break; case 1 : ?>
+    {{--<link rel="stylesheet" href="/public/css/userDoc.css">--}}
+    {{--<script defer src="/public/js/IndexForIOS.js"></script>--}}
+    <?// break; case 2 : ?>
+    {{--<link rel="stylesheet" href="/public/css/all-ie-only.css">--}}
+    {{--<script defer src="/public/js/Index.js"></script>--}}
+    <?// break; endswitch; ?>
     <script>
         function onLoad(str) {
             var xmlhttp = new XMLHttpRequest();
@@ -61,7 +60,7 @@
         <a class="logo">ProDVD Cloud</a>
         <div class="logOutUs">
             <div class="emailUser text-lowercase">
-                <?= $_COOKIE['email']?>
+                <?//= $_COOKIE['email']?>
             </div>
             <a href="/" id="logOutUser" class="logOut">Log Out
                 <span class=" fa fa-sign-out"></span>

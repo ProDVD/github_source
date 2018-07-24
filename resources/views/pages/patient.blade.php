@@ -5,12 +5,13 @@
         <div class="sessionPanel">
             <div class="scrollbar">
                 <div class="sessionBox">
-                    <? if($sessionList != ''):?>
-                    <? foreach($sessionList as $k):?>
-                    <a class="sessionLink" href="#" onClick="onLoad('<?=$k->sessionId;?>')">
-                        <div class="oneSession" onClick="onLoad('<?=$k->sessionId;?>')">
+                <? if($sessionList != ''):?>
+                <? foreach($sessionList as $k):?>
+
+                    <a class="sessionLink" href="#" onClick="onLoad('{{ $k['session_id'] }}')">
+                        <div class="oneSession" onClick="onLoad('{{ $k['session_id'] }}')">
                             <span>
-                                <?=$k->sessDate?>
+                                {{ $k['creation_time'] }}.
                             </span>
                         </div>
                     </a>

@@ -21,6 +21,10 @@ class Switcher extends Model
     public  static function getSessByPatId($sess_id)
     {
         $res = Session::where('patient_id', $sess_id)->get()->sortByDesc('creation_time');
-        return $res;
+        foreach($res as $k)
+        {
+            $sessionList[] = $k->toArray();
+        }
+        return $sessionList;
     }
 }

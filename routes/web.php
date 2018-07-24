@@ -13,7 +13,7 @@
 
 Route::get('/test', 'HomeController@test');
 Route::get('/docmode', 'HomeController@docmode');
-Route::get('/patient', 'HomeController@patient');
+Route::get('/patient', 'HomeController@patient')->name('patient.index');
 
 
 Route::get('/', function () {
