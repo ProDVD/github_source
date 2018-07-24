@@ -36,22 +36,13 @@ class HomeController extends Controller
     {
         $user = Switcher::userAuth($request->get('email'), $request->get('password'));
         if($user instanceof Doctor) {
-            redirect('pages.docmode');
+             $to = '/docmode';
         } elseif($user instanceof Patient) {
-            redirect('pages.docmode');
+            $to = '/patient';
+            $var = Switcher::getSessByPatId($user->patient_id);
         } else {
-            dd('null');
+            $to = '/';
         }
-
-        dd($user->patient_id);
-        $var = Switcher::getSessByPatId($user->patient_id);
-        if($isDoctor) {
-            redirect('/docmode');
-        } else {
-            redirect('/user');
-        }
-
-
+        return redirect($to);
     }
-
 }
