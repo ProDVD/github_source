@@ -1,5 +1,5 @@
 <?php
-
+//patient test
 namespace App\Http\Controllers;
 
 use App\Doctor;
