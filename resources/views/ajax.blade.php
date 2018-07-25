@@ -8,7 +8,7 @@
                 <div class="modalWin">
                     <a href="#modal<?=$k->type?>"  data-toggle="modal"  onClick="loadProp('<?=$k->type?>', '<?=$k->directLink?>', '<?=$k->downloadLink?>')">
                         <img src="<?=$k->thumbnailSource?>" alt="image" width="200px" height="150px">
-                        <img  class="icon" src="/public/image/icon/<?=$k->type?>.png" alt=""></a>
+                        <img  class="icon" src="/image/icon/<?=$k->type?>.png" alt=""></a>
                 </div>
                 <? if ($k->type == 'video'):?>
                 <div class="duration" id="duration<?=$k->type?>">

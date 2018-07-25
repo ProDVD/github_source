@@ -10,7 +10,8 @@
                     <a class="sessionLink" href="#" onclick="onLoad('{{ $k['session_id'] }}')">
                         <div class="oneSession">
                             <span>
-                                {{ $k['creation_time'] }}
+                                <?php $date = explode(' ', $k['creation_time']) ?>
+                                {{ $date[0] }}
                             </span>
                         </div>
                     </a>

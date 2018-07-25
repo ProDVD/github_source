@@ -10,20 +10,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <? switch( $browserAnalyzer) : case 0 : ?>
-    <?='All browsers'?>
-    <link rel="stylesheet" href="/public/css/userDoc.css">
-    <script defer src="/public/js/Index.js"></script>
+    <link rel="stylesheet" href="/css/userDoc.css">
+    <script defer src="/js/Index.js"></script>
     <? break; case 1 : ?>
-    <?='Iphone or Ipad'?>
-    <link rel="stylesheet" href="/public/css/userDoc.css">
-    <script defer src="/public/js/IndexForIOS.js"></script>
+    <link rel="stylesheet" href="/css/userDoc.css">
+    <script defer src="/js/IndexForIOS.js"></script>
     <? break; case 2 : ?>
-    <?='IE works!'?>
-    <link rel="stylesheet" href="/public/css/all-ie-only.css">
-    <script defer src="/public/js/Index.js"></script>
+    <link rel="stylesheet" href="/css/all-ie-only.css">
+    <script defer src="/js/Index.js"></script>
     <? break; endswitch; ?>
-
-
 </head>
 <body>
 <div class="curtain">
