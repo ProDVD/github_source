@@ -22,9 +22,11 @@ class HomeController extends Controller
     {
         $sessionList;
         $res = Switcher::getSessByPatId(session('user'));
+        $browserAnalyzer = Switcher::browserAnalyzer();
 
         return view('pages.patient', [
-            'sessionList' => Switcher::getSessByPatId(session('user'))
+            'sessionList' => Switcher::getSessByPatId(session('user')),
+            'browserAnalyzer' => $browserAnalyzer
         ]);
     }
 

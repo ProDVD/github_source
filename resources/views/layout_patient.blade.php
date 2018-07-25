@@ -8,19 +8,22 @@
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed" rel="stylesheet">
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    {{--<link rel="stylesheet" href="bootstrap4/bootstrap.css">--}}
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <?// switch( browserAnalyzer ()) : case 0 : ?>
+    <? switch( $browserAnalyzer) : case 0 : ?>
+    <?='All browsers'?>
     <link rel="stylesheet" href="/public/css/userDoc.css">
     <script defer src="/public/js/Index.js"></script>
-    <?// break; case 1 : ?>
-    {{--<link rel="stylesheet" href="/public/css/userDoc.css">--}}
-    {{--<script defer src="/public/js/IndexForIOS.js"></script>--}}
-    <?// break; case 2 : ?>
-    {{--<link rel="stylesheet" href="/public/css/all-ie-only.css">--}}
-    {{--<script defer src="/public/js/Index.js"></script>--}}
-    <?// break; endswitch; ?>
+    <? break; case 1 : ?>
+    <?='Iphone or Ipad'?>
+    <link rel="stylesheet" href="/public/css/userDoc.css">
+    <script defer src="/public/js/IndexForIOS.js"></script>
+    <? break; case 2 : ?>
+    <?='IE works!'?>
+    <link rel="stylesheet" href="/public/css/all-ie-only.css">
+    <script defer src="/public/js/Index.js"></script>
+    <? break; endswitch; ?>
+
+
 </head>
 <body>
 <div class="curtain">

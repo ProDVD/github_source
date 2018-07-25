@@ -44,4 +44,18 @@ class Switcher extends Model
         }
         return $fileList;
     }
+
+    public static function browserAnalyzer()
+    {
+            $serverVar = $_SERVER['HTTP_USER_AGENT'];
+            if(preg_match("/\bTrident\b/i",$serverVar) == 0 )
+            {
+                if (preg_match("/\biPhone\b/i",$serverVar) !=0 || preg_match("/\biPad\b/i", $serverVar) !=0)
+                    return 1;
+                else
+                    return 0;
+            }
+            else
+                return 2;
+    }
 }
