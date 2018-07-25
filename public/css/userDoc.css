@@ -186,6 +186,9 @@ body {
 a {
   text-decoration: none !important;
 }
+.sessionLink{
+  display: block;
+}
 .oneSession {
   text-decoration: none !important;
   outline: none;

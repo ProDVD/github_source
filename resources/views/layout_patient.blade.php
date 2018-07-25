@@ -21,34 +21,6 @@
     {{--<link rel="stylesheet" href="/public/css/all-ie-only.css">--}}
     {{--<script defer src="/public/js/Index.js"></script>--}}
     <?// break; endswitch; ?>
-    <script>
-        function onLoad(str) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4) {
-                    document.getElementById("eugeneajax").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "ajax.php?q=" + str, true);
-            xmlhttp.send();
-            var a = document.getElementById('sessionLink');
-        }
-        function loadProp(type, link, downLink, delLink) {
-            console.log(downLink);
-
-            if (type == 'photo') {
-                var a = document.getElementById("modalPhoto");
-                a.src = link;
-                document.getElementById("mylinkImg").href = downLink;
-                document.getElementById("mylinkImgDel").href = delLink;
-            }
-            else {
-                var a = document.getElementById("modalVideo");
-                a.src = link;
-                document.getElementById("mylinkVid").href = downLink;
-            }
-        }
-    </script>
 </head>
 <body>
 <div class="curtain">
@@ -158,6 +130,32 @@
         </div>
     </div>
 </div>
+<script>
+    function onLoad(str) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    document.getElementById("eugeneajax").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "/ajax/" + str, true);
+            xmlhttp.send();
+    }
+    function loadProp(type, link, downLink, delLink) {
+
+        if (type == 'photo') {
+            var a = document.getElementById("modalPhoto");
+            a.src = link;
+            document.getElementById("mylinkImg").href = downLink;
+            document.getElementById("mylinkImgDel").href = delLink;
+        }
+        else {
+            var a = document.getElementById("modalVideo");
+            a.src = link;
+            document.getElementById("mylinkVid").href = downLink;
+        }
+    }
+</script>
 </body>
 
 </html>

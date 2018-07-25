@@ -84,36 +84,34 @@ function goBack(value) {
 }
 
 
-var act = document.querySelectorAll('.oneSession');
-var us = act[0];
 window.onload = function () {
-    us.click();
-    us.classList.add('checked');
-}
+    document.querySelectorAll('.sessionLink')[0].click();
+    document.querySelectorAll('.oneSession')[0].classList.add('checked');
+};
 
 
 $(function () {
-    $("div.oneSession").click(function () {
-        $("div.oneSession").removeClass("checked");
-        $(this).addClass("checked");
+    $(".sessionLink").on('click', function () {
+        $(".sessionLink .oneSession").removeClass("checked");
+        $(this).find('.oneSession').addClass("checked");
         $("#home-tab").removeClass("active show");
         $("#home-tab").addClass("active show");
         $("#profile-tab").removeClass("active show");
         $("#contact-tab").removeClass("active show");
-        $("div#" + $(this).attr("href")).show();
+        // $("div" + $(this).attr("href")).show();
         return false;
     });
 });
 
 $(function () {
-    $("div.oneSessionDoc").click(function () {
+    $("div.oneSessionDoc").on('click', function () {
         $("div.oneSessionDoc").removeClass("checked");
         $(this).addClass("checked");
         $("#home-tab").removeClass("active show");
         $("#home-tab").addClass("active show");
         $("#profile-tab").removeClass("active show");
         $("#contact-tab").removeClass("active show");
-        $("div#" + $(this).attr("href")).show();
+        // $("div" + $(this).attr("href")).show();
         return false;
     });
 });

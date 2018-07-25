@@ -7,11 +7,10 @@
                 <div class="sessionBox">
                 <? if($sessionList != ''):?>
                 <? foreach($sessionList as $k):?>
-
-                    <a class="sessionLink" href="#" onClick="onLoad('{{ $k['session_id'] }}')">
-                        <div class="oneSession" onClick="onLoad('{{ $k['session_id'] }}')">
+                    <a class="sessionLink" href="#" onclick="onLoad('{{ $k['session_id'] }}')">
+                        <div class="oneSession">
                             <span>
-                                {{ $k['creation_time'] }}.
+                                {{ $k['creation_time'] }}
                             </span>
                         </div>
                     </a>
