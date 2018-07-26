@@ -23,7 +23,9 @@ class HomeController extends Controller
         $sessionList;
         $res = Switcher::getSessByPatId(session('user'));
         $browserAnalyzer = Switcher::browserAnalyzer();
-
+        if(!$res){
+            return redirect('/');
+        }
         return view('pages.patient', [
             'sessionList' => Switcher::getSessByPatId(session('user')),
             'browserAnalyzer' => $browserAnalyzer
