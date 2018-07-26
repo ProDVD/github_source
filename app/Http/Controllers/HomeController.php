@@ -12,7 +12,7 @@ class HomeController extends Controller
     public $sessionList;
     public function test()
     {
-        dd(Switcher::getFilesById(10));
+        dd(Switcher::mainSearchEngine('patient@mail.org'));
         //$var = Switcher::userAuth('patient_1@mail.ru', 'fesgxh');
 //        $var = Switcher::getSessByPatId(2437);
 //        dd($var);

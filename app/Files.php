@@ -22,10 +22,6 @@ class Files extends Model
         $this->fileId = $fileId;
         $this->driveKey = $driveKey;
 
-
-
-
-
         $this->downloadLink = 'https://drive.google.com/uc?id=' . $fileId . '&export=download';
 
         $this->thumbnailSource = 'https://drive.google.com/thumbnail?authuser=0&sz=w150&id=' . $this->fileId;

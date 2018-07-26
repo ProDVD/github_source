@@ -11,6 +11,7 @@ class Switcher extends Model
     {
         $res = Doctor::where('email', $mail)->where('password', $pass)->first();
         if($res != null) {
+            session(['docEmail' => $mail]);
             return $res;
         } else if(($res = Patient::where('email', $mail)->where('password', $pass)->first()) != null) {
             return $res;
@@ -29,13 +30,9 @@ class Switcher extends Model
 
     public static function getFilesById($id)
     {
-//        $sql = "SELECT tbl_files.name, tbl_files.crtDateTime, tbl_files.duration, tbl_files.path, tbl_cloud_drives.Browse_key
-//FROM tbl_files right join tbl_cloud_drives on tbl_cloud_drives.cloud_drive_id=tbl_files.cloud_drive_id
-//WHERE tbl_files.session_id=$ID";
-
         $rows = DB::table('tbl_files')
-            ->rightJoin('tbl_cloud_drives','tbl_cloud_drives.cloud_drive_id','=','tbl_files.cloud_drive_id')
-            ->select('tbl_files.name','tbl_files.crtDateTime', 'tbl_files.duration', 'tbl_files.path', 'tbl_cloud_drives.Browse_key')
+            ->rightJoin('tbl_cloud_drives', 'tbl_cloud_drives.cloud_drive_id', '=', 'tbl_files.cloud_drive_id')
+            ->select('tbl_files.name', 'tbl_files.crtDateTime', 'tbl_files.duration', 'tbl_files.path', 'tbl_cloud_drives.Browse_key')
             ->where('tbl_files.session_id', $id)
             ->get();
 
@@ -47,15 +44,86 @@ class Switcher extends Model
 
     public static function browserAnalyzer()
     {
-            $serverVar = $_SERVER['HTTP_USER_AGENT'];
-            if(preg_match("/\bTrident\b/i",$serverVar) == 0 )
-            {
-                if (preg_match("/\biPhone\b/i",$serverVar) !=0 || preg_match("/\biPad\b/i", $serverVar) !=0)
-                    return 1;
-                else
-                    return 0;
-            }
+        $serverVar = $_SERVER['HTTP_USER_AGENT'];
+        if(preg_match("/\bTrident\b/i", $serverVar) == 0) {
+            if(preg_match("/\biPhone\b/i", $serverVar) != 0 || preg_match("/\biPad\b/i", $serverVar) != 0)
+                return 1;
             else
-                return 2;
+                return 0;
+        } else
+            return 2;
+    }
+
+    public static function mainSearchEngine($p_name, $p_dt_start = '', $p_dt_end = '')
+    {
+//        $doc_email = session('docEmail');
+        $doc_email = 'operator@mail.org';
+        $sql = "select session_id, creation_time, patient_name, patient_email from v_session_search t  where 1=1";
+        if($p_name != '') {
+            if(strpos($p_name, '@') != false)
+                $sql .= " and upper(t.patient_name) like upper ('%$p_name%' )";
+            else
+                $sql .= " and upper(t.patient_email) like upper ('%$p_name%' )";
+        }
+        if($p_dt_start != '' and $p_dt_end != '')
+            $sql .= " and t.creation_time between convert(datetime, '$p_dt_start' , 110) and convert(datetime, '$p_dt_end' , 110)";
+        else if($p_dt_start != '')
+            $sql .= " and t.creation_time >= convert(datetime, '$p_dt_start' , 110)";
+
+        else if($p_dt_end != '')
+            $sql .= " and t.creation_time <= convert(datetime, '$p_dt_end' , 110)";
+
+        $sql .= " and upper (t.doctor_email )= '$doc_email' order by session_id desc";
+
+        if($doc_email != null and $p_name == null and $p_dt_start == null and $p_dt_end == null) {
+            $sql = "select top 3 session_id, creation_time, patient_name, patient_email from v_session_search t  where 1=1  and upper (t.doctor_email )= '$doc_email' order by session_id desc";
+        }
+
+        $res = DB::raw($sql)->getValue();
+        dd($res);
+if($res==null)
+    echo('No result. Try again');
+        else
+            return $res;
+
+
+
+    }
+
+    public static function DoctorSearchEngine($p_name, $p_dt_start, $p_dt_end)
+    {
+        global $sessionList;
+        $doc_email = session('docEmail');
+        $sql = "select session_id, creation_time, patient_name, patient_email from v_session_search t  where 1=1";
+
+        if($p_name != '') {
+            if(strpos($p_name, '@') != false)
+                $sql .= " and upper(t.patient_name) like upper ('%$p_name%' )";
+            else
+                $sql .= " and upper(t.patient_email) like upper ('%$p_name%' )";
+        }
+
+        if($p_dt_start != '' and $p_dt_end != '')
+            $sql .= " and t.creation_time between convert(datetime, '$p_dt_start' , 110) and convert(datetime, '$p_dt_end' , 110)";
+
+        else if($p_dt_start != '')
+            $sql .= " and t.creation_time >= convert(datetime, '$p_dt_start' , 110)";
+
+        else if($p_dt_end != '')
+            $sql .= " and t.creation_time <= convert(datetime, '$p_dt_end' , 110)";
+
+        $sql .= " and upper (t.doctor_email )= '$doc_email' order by session_id desc";
+
+        if($doc_email != null and $p_name == null and $p_dt_start == null and $p_dt_end == null) {
+            $sql = "select top 3 session_id, creation_time, patient_name, patient_email from v_session_search t  where 1=1  and upper (t.doctor_email )= '$doc_email' order by session_id desc";
+        }
+        $stmt = Initializer()->query($sql);
+        $sessionList = null;
+        while ($row = $stmt->fetch(2)) {
+            $session = new oneSession($row['session_id'], $row['creation_time'], $row['patient_name'], $row['patient_email']);
+            $sessionList[] = $session;
+        }
+        if($sessionList == '')
+            echo('No result. Try again');
     }
 }
