@@ -85,8 +85,10 @@ function goBack(value) {
 
 
 window.onload = function () {
-    document.querySelectorAll('.sessionLink')[0].click();
-    document.querySelectorAll('.oneSession')[0].classList.add('checked');
+    if (document.querySelectorAll('.sessionLink')[0]){
+        document.querySelectorAll('.sessionLink').click();
+        document.querySelectorAll('.oneSession')[0].classList.add('checked');
+    }
 };
 
 

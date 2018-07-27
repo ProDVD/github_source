@@ -15,6 +15,8 @@ Route::get('/test', 'HomeController@test');
 Route::get('/docmode', 'HomeController@docmode');
 Route::get('/patient', 'HomeController@patient')->name('patient.index');
 Route::get('/ajax/{id}', 'HomeController@ajax');
+Route::get('/search/{id}', 'HomeController@search');
+Route::get('/getfiles/{id}', 'HomeController@getFiles');
 
 
 Route::get('/', function () {

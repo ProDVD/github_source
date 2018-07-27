@@ -2,6 +2,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>ProDVD Cloud</title>
+    <meta name="csrf-token" content="jiEtF7Kld6xOlzoj8M5eaZMR9f2U4r7FHGGk3xSAbRA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=1366px,scale=0.4, user-scalable=yes">
     <script src="https://use.fontawesome.com/f1a5474be5.js"></script>
@@ -136,7 +137,7 @@
                     document.getElementById("eugeneajax").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET", "/ajax/" + str, true);
+            xmlhttp.open("GET", "/ajax/" + str);
             xmlhttp.send();
     }
     function loadProp(type, link, downLink, delLink) {
@@ -157,3 +158,4 @@
 </body>
 
 </html>
+

@@ -81,7 +81,7 @@ body {
   font-weight: 600;
 }
 .generalBox .twoLineBox .label {
-  width: 240px;
+  width: 260px;
   color: #474747;
 }
 .generalBox .contentPanel {
@@ -95,7 +95,7 @@ body {
 }
 .generalBox .contentPanel .sessionPanel .scrollbar {
   height: 100%;
-  width: 250px;
+  width: 270px;
   background: white;
   overflow: auto;
   position: relative;

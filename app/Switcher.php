@@ -22,7 +22,18 @@ class Switcher extends Model
     public static function getSessByPatId($sess_id)
     {
         $res = Session::where('patient_id', $sess_id)->get()->sortByDesc('creation_time');
-        if(!empty($res->toArray())){
+        if(!empty($res->toArray())) {
+            foreach ($res as $k) {
+                $sessionList[] = $k->toArray();
+            }
+            return $sessionList;
+        }
+        return false;
+    }
+    public static function getSessByDocId($sess_id)
+    {
+        $res = Session::where('doctor_id', $sess_id)->get()->sortByDesc('creation_time');
+        if(!empty($res->toArray())) {
             foreach ($res as $k) {
                 $sessionList[] = $k->toArray();
             }
@@ -59,45 +70,42 @@ class Switcher extends Model
 
     public static function mainSearchEngine($p_name, $p_dt_start = '', $p_dt_end = '')
     {
+        if($p_name != '') {
+            $res = DB::table('v_session_search')
+                ->where('patient_email', 'like', '%' . str_replace(' ', '', $p_name) . '%')
+                ->orWhere('patient_name', 'like', "%{$p_name}%")
+                ->get();
+        }
+        return $res;
 //        $doc_email = session('docEmail');
         $doc_email = 'operator@mail.org';
-        $sql = "select session_id, creation_time, patient_name, patient_email from v_session_search t  where 1=1";
-        if($p_name != '') {
-            if(strpos($p_name, '@') != false)
-                $sql .= " and upper(t.patient_name) like upper ('%$p_name%' )";
-            else
-                $sql .= " and upper(t.patient_email) like upper ('%$p_name%' )";
-        }
+        dd($res);
         if($p_dt_start != '' and $p_dt_end != '')
-            $sql .= " and t.creation_time between convert(datetime, '$p_dt_start' , 110) and convert(datetime, '$p_dt_end' , 110)";
-        else if($p_dt_start != '')
-            $sql .= " and t.creation_time >= convert(datetime, '$p_dt_start' , 110)";
+        $sql .= " and t.creation_time between convert(datetime, '$p_dt_start' , 110) and convert(datetime, '$p_dt_end' , 110)";
+    else if($p_dt_start != '')
+        $sql .= " and t.creation_time >= convert(datetime, '$p_dt_start' , 110)";
 
-        else if($p_dt_end != '')
-            $sql .= " and t.creation_time <= convert(datetime, '$p_dt_end' , 110)";
+    else if($p_dt_end != '')
+        $sql .= " and t.creation_time <= convert(datetime, '$p_dt_end' , 110)";
 
-        $sql .= " and upper (t.doctor_email )= '$doc_email' order by session_id desc";
+        $sql .= " and upper (t.doctor_email ) like upper('%$doc_email%') order by session_id desc";
 
         if($doc_email != null and $p_name == null and $p_dt_start == null and $p_dt_end == null) {
             $sql = "select top 3 session_id, creation_time, patient_name, patient_email from v_session_search t  where 1=1  and upper (t.doctor_email )= '$doc_email' order by session_id desc";
         }
 
-        $res = DB::raw($sql)->getValue();
-        dd($res);
-if($res==null)
-    echo('No result. Try again');
+//        $res = $sql;
+        if($res == null)
+            echo('No result. Try again');
         else
             return $res;
-
-
-
     }
 
     public static function DoctorSearchEngine($p_name, $p_dt_start, $p_dt_end)
     {
         global $sessionList;
         $doc_email = session('docEmail');
-        $sql = "select session_id, creation_time, patient_name, patient_email from v_session_search t  where 1=1";
+        $sql = "SELECT session_id, creation_time, patient_name, patient_email FROM v_session_search t  WHERE 1=1";
 
         if($p_name != '') {
             if(strpos($p_name, '@') != false)

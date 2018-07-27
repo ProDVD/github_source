@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <script src="https://use.fontawesome.com/f1a5474be5.js"></script>
+    <meta name="csrf-token" content="jiEtF7Kld6xOlzoj8M5eaZMR9f2U4r7FHGGk3xSAbRA">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -20,7 +21,7 @@
         </div>
         <div class="formArea">
             <form method="post" name="myForm" action="/switcher" onsubmit="validateForm();">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                {{ csrf_field() }}
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Email" id="demo1" name="email" >
                     <div class="input-group-append">

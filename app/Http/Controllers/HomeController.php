@@ -6,13 +6,14 @@ use App\Doctor;
 use App\Patient;
 use App\Switcher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public $sessionList;
     public function test()
     {
-        dd(Switcher::mainSearchEngine('patient@mail.org'));
+        dd(Switcher::mainSearchEngine('test pat'));
         //$var = Switcher::userAuth('patient_1@mail.ru', 'fesgxh');
 //        $var = Switcher::getSessByPatId(2437);
 //        dd($var);
@@ -20,7 +21,6 @@ class HomeController extends Controller
 
     public function patient()
     {
-        $sessionList;
         $res = Switcher::getSessByPatId(session('user'));
         $browserAnalyzer = Switcher::browserAnalyzer();
         if(!$res){
@@ -34,8 +34,10 @@ class HomeController extends Controller
 
     public function docmode()
     {
+        $browserAnalyzer = Switcher::browserAnalyzer();
         return view('pages.docmode', [
-            'sessionList' => ''
+            'sessionList' => Switcher::getSessByDocId(session('doc')),
+            'browserAnalyzer' => $browserAnalyzer
         ]);
     }
 
@@ -49,6 +51,7 @@ class HomeController extends Controller
         $user = Switcher::userAuth($request->get('email'), $request->get('password'));
         if($user instanceof Doctor) {
              $to = '/docmode';
+            session(['doc' => $user->doctor_id]);
         } elseif($user instanceof Patient) {
             session(['user' => $user->patient_id]);
             $to = '/patient';
@@ -58,9 +61,26 @@ class HomeController extends Controller
         return redirect($to);
     }
 
-    public function ajax($id)
+    public function getFiles($id)
     {
-        $fileList = Switcher::getFilesById($id);
-        return view('ajax', compact('fileList'));
+        $results = Switcher::getFilesById($id);
+        foreach ($results as $res){
+            $fileList[] = [
+                'directLink' => $res->directLink,
+                'downloadLink' => $res->downloadLink,
+                'thumbnailSource' => $res->thumbnailSource,
+                'type' => $res->type,
+                'time' => $res->time,
+                'name' => $res->name
+            ];
+        }
+        return response()->json($fileList);
     }
+
+    public function search($text)
+    {
+        $res = Switcher::mainSearchEngine($text);
+        return response()->json($res);
+    }
+
 }
