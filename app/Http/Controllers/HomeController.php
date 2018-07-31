@@ -13,7 +13,7 @@ class HomeController extends Controller
     public $sessionList;
     public function test()
     {
-        dd(Switcher::mainSearchEngine('test pat'));
+        dd(Switcher::defaultFunc(10));
         //$var = Switcher::userAuth('patient_1@mail.ru', 'fesgxh');
 //        $var = Switcher::getSessByPatId(2437);
 //        dd($var);
@@ -37,7 +37,7 @@ class HomeController extends Controller
         $browserAnalyzer = Switcher::browserAnalyzer();
         return view('pages.docmode', [
             'sessionList' => Switcher::getSessByDocId(session('doc')),
-            'browserAnalyzer' => $browserAnalyzer
+            'browserAnalyzer' => $browserAnalyzer,
         ]);
     }
 

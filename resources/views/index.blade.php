@@ -46,17 +46,17 @@
 
 <script>
     var a =document.getElementById('1000');
-    function validateForm()
-    {
-        var x=document.forms["myForm"]["login"].value;
-        var atpos=x.indexOf("@");
-        var dotpos=x.lastIndexOf(".");
-        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
-        {
-            window.location.href = "http://"+ a.innerHTML +"/error.php";
-            return false;
-        }
-    }
+    {{--function validateForm()--}}
+    {{--{--}}
+        {{--var x=document.forms["myForm"]["login"].value;--}}
+        {{--var atpos=x.indexOf("@");--}}
+        {{--var dotpos=x.lastIndexOf(".");--}}
+        {{--if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)--}}
+        {{--{--}}
+            {{--window.location.href = "http://"+ a.innerHTML +"/error.php";--}}
+            {{--return false;--}}
+        {{--}--}}
+    {{--}--}}
 </script>
 </body>
 </html>

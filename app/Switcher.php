@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -136,5 +137,22 @@ class Switcher extends Model
         }
         if($sessionList == '')
             echo('No result. Try again');
+    }
+
+    public static function defaultFunc($doctor_id)
+    {
+//        SELECT [session_id]
+//      ,[creation_time]
+//      ,[device_id]
+//      ,[isEmailSent]
+//      ,[comment]
+//      ,[patient_id]
+//      ,[doctor_id]
+//  FROM [dbo].[tbl_session_protocol] t
+//  where t.doctor_id=10
+//    and  cast(t.creation_time as date) = (select cast(max(s.creation_time) as date) from tbl_session_protocol s where s.doctor_id=10);
+        return  DB::table('tbl_session_protocol')->select(['session_id', 'creation_time', 'device_id', 'patient_id', 'doctor_id'])->where('doctor_id', $doctor_id)->orderBy('creation_time', 'desc')->get();
+//        return $res;
+//        return $res->where('creation_time', '<=', Carbon::now()->subDay())->get();
     }
 }

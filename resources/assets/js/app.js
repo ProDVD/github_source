@@ -24,6 +24,13 @@ const app = new Vue({
             this.fetch();
         }
     },
+    mounted(){
+        axios.get('/docmode').then(result => {
+            this.results = result.data;
+        }).catch(error => {
+            console.log(error);
+        });
+    },
     methods: {
         fetch() {
             axios.get('/search/' + this.keywords).then(result => {
