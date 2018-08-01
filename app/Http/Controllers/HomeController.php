@@ -13,7 +13,7 @@ class HomeController extends Controller
     public $sessionList;
     public function test()
     {
-        dd(Switcher::defaultFunc(10));
+        dd($this->defaultFunc());
         //$var = Switcher::userAuth('patient_1@mail.ru', 'fesgxh');
 //        $var = Switcher::getSessByPatId(2437);
 //        dd($var);
@@ -83,4 +83,21 @@ class HomeController extends Controller
         return response()->json($res);
     }
 
+    public function defaultFunc()
+    {
+//        $doctor_id = session('doc');
+        $doctor_id = 1024;
+//        return  DB::table('tbl_session_protocol')->select(['session_id', 'creation_time', 'device_id', 'patient_id', 'doctor_id'])->where('doctor_id', $doctor_id)->addSelect(DB::raw('cast(creation_time as date) = cast(max(creation_time) as date)'))->get();
+//        return DB::table('tbl_session_protocol')->select(['session_id', 'creation_time', 'device_id', 'patient_id', 'doctor_id'])->where('doctor_id', $doctor_id)->where(DB::raw('cast(creation_time as date) = cast(max(creation_time) as date)'))->get();
+//        return 545;
+//        return $res->where('creation_time', '<=', Carbon::now()->subDay())->get();
+
+
+        $pdo = new \PDO("sqlsrv:server = tcp:ssmserver2.database.windows.net,1433; Database = db_ssm", "prodvdadmin", "AdminQwerty123");
+
+
+        $row = $pdo->query("SELECT session_id, creation_time, device_id, patient_id, doctor_id FROM tbl_session_protocol t WHERE t.doctor_id='$doctor_id' AND  CAST(t.creation_time AS DATE) = (SELECT CAST(MAX(s.creation_time) AS DATE) FROM tbl_session_protocol s WHERE s.doctor_id='$doctor_id')");
+
+        return response()->json($row->fetchAll(2));
+    }
 }

@@ -13,6 +13,7 @@
 
 Route::get('/test', 'HomeController@test');
 Route::get('/docmode', 'HomeController@docmode');
+Route::get('/default', 'HomeController@defaultFunc');
 Route::get('/patient', 'HomeController@patient')->name('patient.index');
 Route::get('/ajax/{id}', 'HomeController@ajax');
 Route::get('/search/{id}', 'HomeController@search');

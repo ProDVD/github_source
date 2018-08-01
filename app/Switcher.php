@@ -31,6 +31,7 @@ class Switcher extends Model
         }
         return false;
     }
+
     public static function getSessByDocId($sess_id)
     {
         $res = Session::where('doctor_id', $sess_id)->get()->sortByDesc('creation_time');
@@ -82,12 +83,12 @@ class Switcher extends Model
         $doc_email = 'operator@mail.org';
         dd($res);
         if($p_dt_start != '' and $p_dt_end != '')
-        $sql .= " and t.creation_time between convert(datetime, '$p_dt_start' , 110) and convert(datetime, '$p_dt_end' , 110)";
-    else if($p_dt_start != '')
-        $sql .= " and t.creation_time >= convert(datetime, '$p_dt_start' , 110)";
+            $sql .= " and t.creation_time between convert(datetime, '$p_dt_start' , 110) and convert(datetime, '$p_dt_end' , 110)";
+        else if($p_dt_start != '')
+            $sql .= " and t.creation_time >= convert(datetime, '$p_dt_start' , 110)";
 
-    else if($p_dt_end != '')
-        $sql .= " and t.creation_time <= convert(datetime, '$p_dt_end' , 110)";
+        else if($p_dt_end != '')
+            $sql .= " and t.creation_time <= convert(datetime, '$p_dt_end' , 110)";
 
         $sql .= " and upper (t.doctor_email ) like upper('%$doc_email%') order by session_id desc";
 
@@ -139,20 +140,5 @@ class Switcher extends Model
             echo('No result. Try again');
     }
 
-    public static function defaultFunc($doctor_id)
-    {
-//        SELECT [session_id]
-//      ,[creation_time]
-//      ,[device_id]
-//      ,[isEmailSent]
-//      ,[comment]
-//      ,[patient_id]
-//      ,[doctor_id]
-//  FROM [dbo].[tbl_session_protocol] t
-//  where t.doctor_id=10
-//    and  cast(t.creation_time as date) = (select cast(max(s.creation_time) as date) from tbl_session_protocol s where s.doctor_id=10);
-        return  DB::table('tbl_session_protocol')->select(['session_id', 'creation_time', 'device_id', 'patient_id', 'doctor_id'])->where('doctor_id', $doctor_id)->orderBy('creation_time', 'desc')->get();
-//        return $res;
-//        return $res->where('creation_time', '<=', Carbon::now()->subDay())->get();
-    }
+
 }

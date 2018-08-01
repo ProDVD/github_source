@@ -24,11 +24,11 @@ const app = new Vue({
             this.fetch();
         }
     },
-    mounted(){
-        axios.get('/docmode').then(result => {
+    created(){
+        axios.get('/default').then(result => {
             this.results = result.data;
         }).catch(error => {
-            console.log(error);
+                console.log(error);
         });
     },
     methods: {

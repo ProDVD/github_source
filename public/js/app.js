@@ -101,10 +101,10 @@ var app = new Vue({
             this.fetch();
         }
     },
-    mounted: function mounted() {
+    created: function created() {
         var _this = this;
 
-        axios.get('/docmode').then(function (result) {
+        axios.get('/default').then(function (result) {
             _this.results = result.data;
         }).catch(function (error) {
             console.log(error);
