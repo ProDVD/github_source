@@ -13,6 +13,7 @@ class HomeController extends Controller
     public $sessionList;
     public function test()
     {
+        dd($a->fetchAll(2));
         dd($this->defaultFunc());
         //$var = Switcher::userAuth('patient_1@mail.ru', 'fesgxh');
 //        $var = Switcher::getSessByPatId(2437);
