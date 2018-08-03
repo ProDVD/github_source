@@ -1,5 +1,5 @@
 @extends('layout_doctor')
-
+{{----}}
 @section('content')
     <div class="contentPanel">
         <div class="sessionPanel">

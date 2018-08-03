@@ -43,7 +43,7 @@ class Switcher extends Model
         }
         return false;
     }
-
+//
     public static function getFilesById($id)
     {
         $rows = DB::table('tbl_files')

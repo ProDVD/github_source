@@ -28,7 +28,7 @@ class HomeController extends Controller
             'browserAnalyzer' => $browserAnalyzer
         ]);
     }
-
+//
     public function docmode()
     {
         $browserAnalyzer = Switcher::browserAnalyzer();

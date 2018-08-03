@@ -165,6 +165,7 @@
 </div>
 <script src="/js/app.js"></script>
 <script>
+    {{----}}
     function onLoad(str) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {

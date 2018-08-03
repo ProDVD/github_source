@@ -83,7 +83,7 @@ function goBack(value) {
     video.currentTime += value;
 }
 
-
+//
 window.onload = function () {
     console.log(document.querySelector('.sessionLink'));
     if (document.querySelector('.sessionLink')){
