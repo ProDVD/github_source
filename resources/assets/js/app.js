@@ -25,11 +25,11 @@ const app = new Vue({
         }
     },
     created(){
-        axios.get('/default').then(result => {
-            this.results = result.data;
-        }).catch(error => {
-                console.log(error);
-        });
+        // axios.get('/default').then(result => {
+        //     this.results = result.data;
+        // }).catch(error => {
+        //         console.log(error);
+        // });
     },
     methods: {
         fetch() {
@@ -40,9 +40,10 @@ const app = new Vue({
             });
         },
         loadFiles($id){
+                console.log($id);
             axios.get('/getfiles/' + $id).then(result => {
                 this.files = result.data;
-                console.log(this.files);
+                console.log($id);
             }).catch(error => {
                     console.log(error);
             });
